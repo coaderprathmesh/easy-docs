@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>easy docs </title>
+</head>
+
+<body>
+<h1>easy docs</h1>
+<p>Easy docs is your all in one AI powered companion with multi agentic abilities to read the documentation</p>
+
+
+<h2>upload your docs</h2>
+<p>
+    brouz your files and hit ingest to get your documentation registered in the brain of AI!
+</p>
+
+<input type="file" id="documents" name="documents" multiple>
+<label for="documents"> brouz documents </label> <br>
+<button id="ingest" name="ingest"> ingest documents </button>
+
+<p id="chunk_count"></p>
+<h3 id="prompt" name="prompt">chat with easy docs</h3>
+<p id="response"></p>
+<input type="text" id="question" name="question">
+<label for="question">type in your query:</label> <br>
+<button id="ask" name="ask">ask away </button>
+<script src="/static/scripts.js"></script>
+</body>
+
+</html>
