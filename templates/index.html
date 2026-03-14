@@ -4,12 +4,19 @@
 <head>
     <title>easy docs </title>
 </head>
-
+<main>
 <body>
 <h1>easy docs</h1>
-<p>Easy docs is your all in one AI powered companion with multi agentic abilities to read the documentation</p>
-
-
+<p>Easy docs is your all in one AI powered companion with multi agentic abilities to read the documentations</p>
+<p>currently Supported file formats: </p>
+<ul>
+<li>pdf files</li>
+<li>DOCS (word files) </li>
+<li>HTML (files used for web pages) </li>
+<li> txt (plain text files) </li>
+<li>md (mark down files)</li>
+</ul>
+<hr>
 <h2>upload your docs</h2>
 <p>
     brouz your files and hit ingest to get your documentation registered in the brain of AI!
@@ -19,13 +26,14 @@
 <label for="documents"> brouz documents </label> <br>
 <button id="ingest" name="ingest"> ingest documents </button>
 
-<p id="chunk_count"></p>
+<p id="chunk_count" aria-live="assertive"></p>
 <h3 id="prompt" name="prompt">chat with easy docs</h3>
-<p id="response"></p>
+<p id="response" aria-live="assertive"></p>
 <input type="text" id="question" name="question">
 <label for="question">type in your query:</label> <br>
 <button id="ask" name="ask">ask away </button>
 <script src="/static/scripts.js"></script>
+<script src="/static/send_chat.js"> </script>
 </body>
-
+</main>
 </html>

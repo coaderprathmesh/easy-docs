@@ -1,3 +1,5 @@
+from agents import graph
+from pydantic import BaseModel
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -30,6 +32,18 @@ async def upload_docs(files: List[UploadFile] = File(...)):
     return {"response":f"files processed: {len(files)} and total chunks: {count_chunks}"}
 
 
-@app.post("/chat")
-def ask():
-    pass
+#chat interface
+
+#defining the query type
+class ChatRequest(BaseModel):
+    user_query: str
+
+class ChatResponse(BaseModel):
+    answer: str
+
+@app.post("/chat", response_model=ChatResponse)
+def ask(request: ChatRequest):
+    result = graph.invoke({
+        "question": request.user_query
+    })
+    return ChatResponse(answer=result["full_answer"])
