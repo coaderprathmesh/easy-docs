@@ -84,6 +84,15 @@ def explanation_agent(state):
         - Use simple language.
         - Base the explanation on the context.
 
+        - Structure your explanation so that it prepares the reader for a real-world analogy in the next step.
+
+        - Your explanation should clearly highlight the core idea so the next agent can easily build a scenario from it.
+
+        - don't include summary or anything similar that can potentially break the flow of conversation and internally keep in mind that
+
+        your output will be facing the additions from the other agents, so acordingly design the ending portion.
+        - don't include real time scenarios, instead mention lets see a real world analogy to understand the concept at the end of the explaination.
+
         Context:
         {context}
 
@@ -123,6 +132,11 @@ Guidelines:
 - Use simple language
 - Do not repeat the explanation
 - Focus on an everyday analogy or real system
+- Do not introduce new technical concepts.
+- Do not include code examples or code.
+- Focus on strengthening the user’s intuition about the concept.
+- The scenario should make the concept easier to translate into a programming example in the next step.
+-internally design the end of the output in a way that it allows the additions from coding agent to add the code which will be going to happen right after.
 
 Question:
 {question}
@@ -182,7 +196,11 @@ Guidelines:
 - Prefer using the explanation first
 - Use web_search only if the explanation is not enough
 - Produce clear and runnable code
-
+- Avoid long textual explanations before the code.
+- If instructions or clarifications are needed, include them as comments inside the code.
+- Use short comments for simple guidance and longer comments when explaining important parts of the implementation.
+- After the code block, you may briefly explain the significance of the implementation or highlight important updates.
+- Keep explanations concise and let the code be the main answer.
 Question:
 {question}
 

@@ -1,4 +1,5 @@
 from agents import graph
+from ingest_url import ingest_url
 from pydantic import BaseModel
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
@@ -30,6 +31,21 @@ async def upload_docs(files: List[UploadFile] = File(...)):
         if int(chunks):
             count_chunks += chunks
     return {"response":f"files processed: {len(files)} and total chunks: {count_chunks}"}
+
+#url ingestion
+class URLRequest(BaseModel):
+    url: str
+
+#fastapi endpoint for URL ingestion
+
+@app.post("/ingest-url")
+def ingest_website(request: URLRequest):
+
+    chunks = ingest_url(request.url)
+
+    return {
+        "response": f"Website processed successfully. Total chunks added: {chunks}"
+    }
 
 
 #chat interface

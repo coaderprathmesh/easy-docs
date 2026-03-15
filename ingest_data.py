@@ -17,6 +17,22 @@ from langchain_community.vectorstores import Chroma
 #defining path of chroma db and collection name
 db_path = "easydocs_db"
 collection = "docs"
+#splitter object:
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+
+#imbedding the document
+embeddings = OpenAIEmbeddings()
+#storing vector
+vectordb = Chroma(
+    collection_name=collection,
+    persist_directory= db_path,
+    embedding_function=embeddings
+)
+
+
 
 #function to convert files to text, imbed and store in vector db
 def process_docs(file_name, file_content):
@@ -40,19 +56,7 @@ def process_docs(file_name, file_content):
     for doc in docs: #adding the original file's name refference
         doc.metadata["source"] = file_name
     #splitting the document in chunks
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200
-    )
     chunks = splitter.split_documents(docs)
-    #imbedding the document
-    embeddings = OpenAIEmbeddings()
-    #storing vector
-    vectordb = Chroma(
-        collection_name=collection,
-        persist_directory= db_path,
-        embedding_function=embeddings
-    )
     vectordb.add_documents(chunks)
     #clearing the temp file
     os.remove(temp_path)

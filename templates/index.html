@@ -30,6 +30,11 @@
 <button id="ingest" name="ingest"> ingest documents </button>
 
 <p id="chunk_count" aria-live="assertive"></p>
+<p> or enter the URL in the edit box below</p>
+<input type="text" id="url" name="url">
+<label for="url">enter URL hear: </label> <br>
+<button id="send_url" name="send_url">ingest</button>
+<p id="web_chunk" aria-live="assertive"></p>
 <h3 id="prompt" name="prompt">chat with easy docs</h3>
 <p id="response" aria-live="assertive"></p>
 <input type="text" id="question" name="question">
@@ -37,6 +42,7 @@
 <button id="ask" name="ask">ask away </button>
 <script src="/static/scripts.js"></script>
 <script src="/static/send_chat.js"> </script>
+<script src="/static/ingest_url.js"></script>
 </body>
 </main>
 </html>
