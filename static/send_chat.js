@@ -1,4 +1,5 @@
 const questionInput = document.getElementById("question");
+const show_question = document.getElementById("show_question");
 const askButton = document.getElementById("ask");
 const responseBox = document.getElementById("response");
 
@@ -32,6 +33,9 @@ async function sendQuestion() {
         }
 
         const data = await response.json();
+
+        show_question.innerText = ` you asked: ${question}`;
+
 
         responseBox.innerText = data.answer;
 
