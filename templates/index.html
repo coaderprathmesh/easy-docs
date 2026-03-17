@@ -4,11 +4,12 @@
 <head>
     <title>easy docs </title>
 </head>
-<headder>
+<header>
 <a href="#easydocs">skip to contents</a>
-</headder>
-<main>
+</header>
 <body>
+<main>
+
 <h1 id="easydocs">easy docs</h1>
 <p>Easy docs is your all in one AI powered companion with multi agentic abilities to read the documentations</p>
 <p>currently Supported file formats: </p>
@@ -41,9 +42,54 @@
 <input type="text" id="question" name="question">
 <label for="question">type in your query:</label> <br>
 <button id="ask" name="ask">ask away </button>
+
+<h4>Test Your Understanding</h4>
+
+<button id="generate_quiz" aria-live="assertive">Generate Quiz</button>
+
+<div id="quiz_section" hidden>
+
+    <h5 id="quiz_question" aria-live="assertive"></h5>
+
+    <form id="quiz_form">
+
+        <fieldset>
+            <legend>Select the best answer</legend>
+
+            <div>
+                <input type="radio" id="opt0" name="quiz_option" value="0">
+                <label for="opt0" id="label0"></label>
+            </div>
+
+            <div>
+                <input type="radio" id="opt1" name="quiz_option" value="1">
+                <label for="opt1" id="label1"></label>
+            </div>
+
+            <div>
+                <input type="radio" id="opt2" name="quiz_option" value="2">
+                <label for="opt2" id="label2"></label>
+            </div>
+
+            <div>
+                <input type="radio" id="opt3" name="quiz_option" value="3">
+                <label for="opt3" id="label3"></label>
+            </div>
+
+        </fieldset>
+
+    </form>
+
+    <button id="submit_quiz">Check Answer</button>
+
+    <p id="quiz_result" aria-live="assertive"></p>
+
+</div>
+
 <script src="/static/scripts.js"></script>
 <script src="/static/send_chat.js"> </script>
 <script src="/static/ingest_url.js"></script>
+<script src="/static/quiz.js"></script>
 </body>
 </main>
 </html>

@@ -1,3 +1,4 @@
+from quiz import generate_quiz
 from agents import graph
 from ingest_url import ingest_url
 from pydantic import BaseModel
@@ -63,3 +64,20 @@ def ask(request: ChatRequest):
         "question": request.user_query
     })
     return ChatResponse(answer=result["full_answer"])
+#base class for receiving information for quiz
+
+class QuizRequest(BaseModel):
+    question: str
+    ai_answer: str
+
+@app.post("/quiz")
+def create_quiz(request: QuizRequest):
+
+    quiz = generate_quiz(
+        question=request.question,
+        ai_answer=request.ai_answer
+    )
+
+    return quiz
+
+
